@@ -1,7 +1,13 @@
+import React from 'react';
+import { Link } from 'react-router-dom'; 
+
 const Brand = () => {
-    return(
-<a className="navbar-brand" href="#">LOGO</a>
-    )
-}
+  return (
+    <Link to="/" className="navbar-brand">
+      <img src="https://i.postimg.cc/nc0HwSrn/logo.jpg" alt="Logo" width="100" />
+    </Link>
+  );
+};
 
 export default Brand;
+

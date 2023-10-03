@@ -1,15 +1,14 @@
-
-const CategoryItem = ({ isActive = false, name }) => {
+  
+  import React from 'react';
+  import { Link } from 'react-router-dom'; 
+  
+  const CategoryItem = ({ isActive = false, name, categoryId }) => {
     return (
-      <a className={`nav-link ${isActive ? 'active text-primary' : ''}`} aria-current="page" href="#">
+      <Link to={`/category/${categoryId}`} className={`nav-link ${isActive ? 'active text-primary' : ''}`} aria-current="page">
         {name}
-      </a>
+      </Link>
     );
   };
   
   export default CategoryItem;
-  
-  
-  
-  
   

@@ -1,9 +1,17 @@
-const ItemListContainer = ({ greeting }) => {
-    return (
-      <div>
-        <h1 style={{ backgroundColor: "#f2f2f2", padding: "20px", textAlign: "center", }}>{greeting}</h1>
-      </div>
-    )
-  }
+import React from "react";
+import ItemList from "./ItemList"; 
 
-  export default ItemListContainer;
+
+const ItemListContainer = ({ greeting }) => {
+  return (
+    <div className="container">
+      <h1 className="text-center" style={{ padding: "20px" }}>
+        {greeting}
+      </h1>
+      <ItemList/>
+    </div>
+
+  );
+};
+
+export default ItemListContainer;

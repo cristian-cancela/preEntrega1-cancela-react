@@ -1,9 +1,9 @@
 const CartItems = ({ count = 0 }) => {
     return (
-        <div className="position-absolute  px-2"
-            style={{ top: 0, right: 0 }}>
+        <div className="position-absolute  px-1"
+            style={{ top: 10, right: 20 }}>
 
-            <span style={{ fontSize: "12px", color: "black" }}>
+            <span style={{ fontSize: "18px", color: "blue" }}>
                 {count}
             </span>
 
@@ -12,3 +12,4 @@ const CartItems = ({ count = 0 }) => {
 }
 
 export default CartItems
+

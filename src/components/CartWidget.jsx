@@ -1,13 +1,13 @@
-import IconCart from "../assets/IconCart";
-import CartItems from "./CartItems";
+import CartItems from "./CartItems"
+import EstiloBotonCart from "./EstiloBotonCart"
 
 const CartWidget = () => {
     return (
-        <button className="bg-warning rounded-circle p-3 position-relative" >
-            <IconCart/> 
+        <div className=" rounded-circle  position-relative" >
+           <EstiloBotonCart/>
             <CartItems count = {2}/>
-        </button>
+        </div>
     )
-} ;
+}
 
-export default CartWidget;
+export default CartWidget
