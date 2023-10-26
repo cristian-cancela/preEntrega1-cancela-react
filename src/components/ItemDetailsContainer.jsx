@@ -1,40 +1,33 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from 'react-router-dom';
-import AsyncMock from "./mock/AsyncMock";
+import React from "react";
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
-import ItemDetails from "./ItemDetails"; 
 import Loader from "../assets/Loader";
+import { useCart } from './CartContext';
+import { getDoc, doc } from "firebase/firestore";
+import { db } from "../firebase/config";
+import useDataWithDelay from './customHooks/useDataWithDelay';
+import { useParams } from 'react-router-dom';
+
 
 const ItemDetailContainer = () => {
-    const { productoId } = useParams(); 
-    const [product, setProduct] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
+  const { productoId } = useParams();
+  const { data: product, isLoading } = useDataWithDelay(async () => {
+    const productoRef = doc(db, "productos", productoId);
+    const productDoc = await getDoc(productoRef);
+    if (productDoc.exists()) {
+      return productDoc.data();
+    } else {
+      throw new Error(`Producto con ID ${productoId} no encontrado.`);
+    }
+  });
 
-    useEffect(() => {
-        AsyncMock()
-            .then((data) => {
-                const foundProduct = data.find((product) => product.id === parseInt(productoId));
+  const { addToCart } = useCart();
 
-                if (foundProduct) {
-                    setProduct(foundProduct);
-                } else {
-                    console.error(`Producto con ID ${productoId} no encontrado.`);
-                }
-
-                setIsLoading(false);
-            })
-            .catch((error) => {
-                console.error("Error al obtener los productos:", error);
-                setIsLoading(false);
-            });
-    }, [productoId]);
-
-    return (
-        <Container>
-            {isLoading ? (
+  return (
+    <Container>
+     {isLoading ? (
                 <div className="loader-container">
-                    <Loader/>
+                    <Loader />
                 </div>
             ) : product ? (
                 <div>
@@ -45,15 +38,16 @@ const ItemDetailContainer = () => {
                             <Card.Text>{`Precio: $${product.precio}`}</Card.Text>
                             <Card.Text>{`Descripción: ${product.descripcion}`}</Card.Text>
                             <Card.Text>{`Stock: ${product.stock}`}</Card.Text>
-                            <ItemDetails stock={product.stock} />
+                            <button onClick={() => addToCart(product)}>agregar al carrito</button>
                         </Card.Body>
                     </Card>
                 </div>
             ) : (
                 <p>Producto no encontrado</p>
             )}
-        </Container>
-    );
+
+    </Container>
+  );
 }
 
 export default ItemDetailContainer;

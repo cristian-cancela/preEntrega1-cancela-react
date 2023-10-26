@@ -1,13 +1,18 @@
-import CartItems from "./CartItems"
-import EstiloBotonCart from "./EstiloBotonCart"
+import React from 'react';
+import { useCart } from './CartContext';
+import EstiloBotonCart from './EstiloBotonCart';
+import CartItems from  './CartItems';
 
 const CartWidget = () => {
-    return (
-        <div className=" rounded-circle  position-relative" >
-           <EstiloBotonCart/>
-            <CartItems count = {2}/>
-        </div>
-    )
+  const { getCartCount } = useCart();
+
+  return (
+    <div className="rounded-circle position-relative">
+      <EstiloBotonCart />
+      <CartItems count={getCartCount()} />
+    </div>
+  );
 }
 
-export default CartWidget
+export default CartWidget;
+

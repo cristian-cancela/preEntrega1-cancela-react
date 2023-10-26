@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Importa Link de react-router-dom
+import { Link } from 'react-router-dom'; 
 import CartWidget from './CartWidget';
 import Brand from './brand';
 import Menubutton from './menuButton';
@@ -19,13 +19,13 @@ const NavBar = () => {
               <Link to="/productos" className="nav-link">PRODUCTOS</Link>
             </li>
             <li className="nav-item">
-              <Link to="/hombres" className="nav-link">HOMBRES</Link>
+              <Link to="/productos/hombres" className="nav-link">HOMBRES</Link>
             </li>
             <li className="nav-item">
-              <Link to="/mujeres" className="nav-link">MUJERES</Link>
+              <Link to="/productos/mujeres" className="nav-link">MUJERES</Link>
             </li>
             <li className="nav-item">
-              <Link to="/sale" className="nav-link">SALE!</Link>
+              <Link to="/productos/sale" className="nav-link">SALE!</Link>
             </li>
           </ul>
         </div>

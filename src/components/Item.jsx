@@ -13,7 +13,6 @@ const Item = ({ product }) => {
       <Card style={{ width: '18rem' }}>
         <Card.Img variant="top" src={img} alt='imagen de un producto de ropa' />
         <Card.Body className="text-center">
-          <Card.Title>{`Producto ${id}`}</Card.Title>
           <Card.Text>{`nombre: ${nombre}`}</Card.Text>
           <Card.Text>{`Precio: $${precio}`}</Card.Text>
           <Card.Text>{`Stock: ${stock}`}</Card.Text>
