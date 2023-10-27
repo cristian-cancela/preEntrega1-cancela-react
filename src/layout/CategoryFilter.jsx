@@ -1,8 +1,8 @@
 import React from 'react';
 import { Container, Row } from 'react-bootstrap';
 import Loader from '../assets/Loader';
-import useFilteredProducts from './customHooks/useFilteredProducts';
-import Item from './Item';
+import useFilteredProducts from '../customHooks/useFilteredProducts';
+import Item from '../components/Item';
 
 const CategoryFilter = ({ category }) => {
     const { products, isLoading } = useFilteredProducts(category);

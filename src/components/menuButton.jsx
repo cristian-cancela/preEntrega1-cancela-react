@@ -1,14 +1,10 @@
+import React from 'react';
+import NavbarToggle from 'react-bootstrap/NavbarToggle';
+
 const Menubutton = () => {
-    return (
-        <button className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-        </button>)
+  return (
+    <NavbarToggle aria-controls="navbarNav" />
+  );
 }
 
-export default Menubutton
+export default Menubutton;

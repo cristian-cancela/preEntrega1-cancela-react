@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { collection, getDocs } from "firebase/firestore";
-import { db } from '../../firebase/config'; 
+import { db } from '../firebase/config'; 
 
 const useFilteredProducts = (category) => {
   const [products, setProducts] = useState([]);
@@ -26,14 +26,15 @@ const useFilteredProducts = (category) => {
         }));
 
         const filteredProducts = data.filter((product) => {
-          return category === categoryMappings[product.categoryId] || categoryMappings[product.categorySale];
+          return category === categoryMappings[product.categoryId] || category === categoryMappings[product.categorySale];
+
         });
 
         setProducts(filteredProducts);
         setIsLoading(false);
       } catch (error) {
         console.error("Error al obtener los productos:", error);
-        setIsLoading(false);
+        setIsLoading(false); 
       }
     };
 

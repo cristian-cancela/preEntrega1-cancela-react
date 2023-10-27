@@ -1,14 +1,15 @@
 import React from 'react';
-import { useCart } from './CartContext';
-import CartTotal from './CartTotal';
-import IncrementButton from './IncrementButton';
-import DecrementButton from './DecrementButton';
+import { useCart } from '../context/CartContext';
+import CartTotal from '../components/cartComponent/CartTotal';
+import IncrementButton from '../components/IncrementButton';
+import DecrementButton from '../components/DecrementButton';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
-    const { cart, removeFromCart, updateItemQuantity, getCartTotal } = useCart();
+    const { cart, removeFromCart, updateItemQuantity, getCartTotal,clearCart } = useCart();
 
     return (
-        <div>
+        <div> 
             <h2>Carrito de Compras</h2>
             {cart.length === 0 ? (
                 <p>El carrito está vacío</p>
@@ -47,6 +48,12 @@ const Cart = () => {
                         ))}
                     </ul>
                     <CartTotal cart={cart} total={getCartTotal()} />
+                    <button onClick={clearCart} className="btn btn-danger">Vaciar Carrito</button>
+                    <Link to="/FinalizarCompra"> 
+                        <button className="btn btn-primary">
+                            Finalizar Compra
+                        </button>
+                    </Link>
                 </div>
             )}
         </div>

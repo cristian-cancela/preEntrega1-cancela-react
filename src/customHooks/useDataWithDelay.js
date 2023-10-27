@@ -16,7 +16,7 @@ function useDataWithDelay(fetchDataFunction) {
           console.error("Error al obtener los datos:", error);
           setIsLoading(false);
         }
-      }, 3000); 
+      }, 2000); 
     };
 
     fetchData();

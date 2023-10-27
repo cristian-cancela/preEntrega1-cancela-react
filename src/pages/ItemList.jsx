@@ -1,21 +1,13 @@
 
-import Item from "./Item";
+import React from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Loader from "../assets/Loader";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../firebase/config";
-import useDataWithDelay from './customHooks/useDataWithDelay';
+import Item from "../components/Item";
+import useProductList from '../customHooks/useProductList'; 
 
 const ItemList = () => {
-  const { data: products, isLoading } = useDataWithDelay(async () => {
-    const productosRef = collection(db, "productos");
-    const querySnapshot = await getDocs(productosRef);
-    return querySnapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-  });
+  const { products, isLoading } = useProductList(); 
 
   return (
     <Container>
@@ -30,7 +22,6 @@ const ItemList = () => {
           ))}
         </Row>
       )}
-
     </Container>
   );
 }
