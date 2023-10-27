@@ -10,11 +10,12 @@ Para ejecutar este proyecto en tu entorno local, sigue estos pasos:
 
 1. Clona este repositorio en tu máquina local:
 
-   git clone https://github.com/tuusuario/nombre-de-repo.git
+   git clone https://github.com/cristian-cancela/proyectoFinal-cancela-react
 
 2. Navega al directorio del proyecto:
 
-   cd nombre-de-repo
+   cd proyectoFinal-cancela-react
+
 
 3. Instala las dependencias del proyecto:
 
